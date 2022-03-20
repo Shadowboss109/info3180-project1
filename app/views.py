@@ -4,10 +4,13 @@ Jinja2 Documentation:    https://jinja.palletsprojects.com/
 Werkzeug Documentation:  https://werkzeug.palletsprojects.com/
 This file creates your application.
 """
-
+import os
 from app import app
 from flask import render_template, request, redirect, url_for
-
+from flask import render_template, request, redirect, url_for, flash, session, abort
+from werkzeug.utils import secure_filename
+from app.forms import ContactForm
+from sys import platform
 
 ###
 # Routing for your application.
@@ -22,7 +25,8 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Theodore Bennett")
+
 
 
 ###
@@ -62,6 +66,25 @@ def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
 
+
+
+
+@app.route('/properties/create', methods=['POST', 'GET'])
+def properties_create():
+   
+    # Instantiate your form class
+    form = ContactForm()
+    filefolder = './uploads'
+    # Validate file upload on submit
+    if request.method == 'POST':
+        # Get file data and save to your uploads folder
+        if form.validate_on_submit():          
+            file = form.photo.data      
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(filefolder, filename))     
+            flash('File Saved', 'success')
+            return redirect(url_for('home'))
+    return render_template('properties_create.html', form= form)
 
 if __name__ == '__main__':
     app.run(debug=True,host="0.0.0.0",port="8080")
