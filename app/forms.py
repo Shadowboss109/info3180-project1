@@ -25,4 +25,8 @@ class ContactForm(FlaskForm):
 
     photo = FileField("Photo",validators=[FileRequired(), FileAllowed(['jpg', 'png'], 'Images only!')])
 
-    property_type=SelectField("Property Type", choices=["House", "Apartment"])
+    property_type=SelectField('Property Type',
+                                choices=[
+                                    ('House', 'House'),
+                                    ('Apartment', 'Apartment')
+                                ])

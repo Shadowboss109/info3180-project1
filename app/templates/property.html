@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block css %} 
+<link rel="stylesheet" href="{{url_for('static',filename='css/property.css')}}">
+<script href="{{url_for('static',filename='js/property.js')}}"></script>
+{% endblock%}
+
+{% block main  %}
+
+<div class="flex">
+
+    <div id="card" class=grid> 
+
+    
+     <div >
+     <img class="card-img" src="{{url_for('.get_image',propertyid=search.property_name) }}" alt="">  
+    </div>
+     <div >
+         <h3>{{search.title}}</h3>
+         <p>${{search.price}}         <span class="prop-type">{{search.property_type}}</span></p>
+
+            <p>{{search.description}}</p>
+           
+            
+            <p>{{search.num_of_bedrooms}} Bedrooms <span class="b_room">{{search.num_of_bathrooms}} Bathrooms</span></p>
+           
+            <p>{{search.location}} </p>
+            
+            <button class="email">Email Realtor</button>
+            
+     </div>
+     
+    </div>
+</div>
+
+{% endblock %}

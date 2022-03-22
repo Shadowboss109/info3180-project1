@@ -2,55 +2,52 @@
 
 
 {% block main %}
-<div class="add">
-    <h1>Add New Property</h1>
-</div>
+<h1>Add New Property</h1>
+<div class="add" id="form">
+    
+
 <form action="{{ url_for('properties_create') }}" enctype="multipart/form-data" method="POST">
 
     {{ form.csrf_token }}
     
-    <div class="add">
+    <div class="info" >
     <h6>{{ form.title.label }}</h6>
-    <p>{{ form.title(required='required',size=50) }}</p>
+    <p>{{ form.title(required='required',size=60) }}</p>
 </div>
 
-    <div class="add">
+    <div class="info">
     <h6>{{ form.description.label }} </h6>
-    <p>{{ form.description(required='required',cols=60,rows=6) }}</p>
+    <p>{{ form.description(required='required',cols=62,rows=6) }}</p>
 
 </div>
-    <div class="add">
-    <h6>{{ form.rooms.label }}</h6>
-    <p>{{ form.rooms(required='required',size=50) }}</p>
+    <div class="info">
+    <h6>{{ form.rooms.label }}<span id="bath">{{ form.bathrooms.label }} </span></h6>
+    <p>{{ form.rooms(required='required',size=60, placeholder="3") }}<span id="bathnum">{{ form.bathrooms(required='required',size=60, placeholder="2") }}</span></p>
 </div>
 
-    <div class="add">
-    <h6>{{ form.bathrooms.label }} </h6>
-    <p>{{ form.bathrooms(required='required',size=50) }}</p>
+    <div class="info">
+    
+    
     </div>
 
-    <div class="add">
-        <h6>{{ form.price.label }} </h6>
-        <p>{{ form.price(required='required',size=50) }}</p>
+    <div class="info">
+        <h6>{{ form.price.label }} <span id="type">{{ form.property_type.label }}</span></h6>
+        <p>{{ form.price(required='required',size=50,placeholder="15,000,000") }}<span id="typenum">{{ form.property_type(required='required',size=1) }}</span></p>
     </div>
 
-        <div class="add">
+        <div class="info">
         <h6>{{ form.location.label }}</h6>
-        <p>{{ form.location(required='required',size=50) }}</p>
+        <p>{{ form.location(required='required',size=60,placeholder="10 Waterloo Rd") }}</p>
     </div>
 
-        <div class="form_info id" id="type">
-        <h6>{{ form.property_type.label }}</h6>
-        <p>Please enter the subject your message.</p>
-        <p>{{ form.property_type(required='required',size=2) }}</p>
-    </div>
+      
 
-        <div class="form_info">
+        <div class="info">
         <h6>{{ form.photo.label }}</h6>
         {{form.photo(class="upload")}}
         </div> 
         
-    <button id="send" type="submit">Add Property</button>
+    <button class="send bg-primary info" type="submit">Add Property</button>
 
-    </form>
+    </form></div>
 {% endblock %}

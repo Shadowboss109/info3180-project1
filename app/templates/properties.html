@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block css %} 
+<link rel="stylesheet" href="{{url_for('static',filename='css/properties.css')}}">
+<script href="{{url_for('static',filename='js/properties.js')}}"></script>
+{% endblock%}
+
+{% block main  %}
+
+<h1> Properties</h1>
+<br>
+<div class='flex-container'>
+    <div class="grid-container">
+    {% for property in properties %}
+    
+    <div> 
+     
+     <img class="images" src="{{url_for('.get_image',propertyid=property.property_name) }}" alt="">  
+
+     <div>
+    
+        <h6 class="describe">{{property.title}}</h6>
+        <p class="location">{{property.location}} </p>
+        <div class="pr bg-primary">
+            <span class="pr">${{property.price}}</span>
+        </div> 
+        
+     </div>
+     <div class="view">
+        <a   href="{{url_for('property',propertyid=property.title)}}">View Property</a>  
+    </div>
+     
+      
+    </div>
+
+    {% endfor %}
+</div>
+</div>
+
+
+{% endblock %}
