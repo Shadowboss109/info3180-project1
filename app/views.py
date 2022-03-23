@@ -30,6 +30,7 @@ def about():
     return render_template('about.html', name="Theodore Bennett")
 
 
+
 #/properties/create
 
 @app.route('/properties/create', methods=['POST', 'GET'])
