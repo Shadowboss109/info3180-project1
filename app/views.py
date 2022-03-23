@@ -37,7 +37,7 @@ def properties_create():
    
     # Instantiate your form class
     form = ContactForm()
-    filefolder = './uploads'
+    filefolder = '/uploads'
     # Validate file upload on submit
     if request.method == 'POST':
         # Get file data and save to your uploads folder
@@ -52,7 +52,7 @@ def properties_create():
 
             photo = form.photo.data            
             filename = secure_filename(photo.filename)
-            photo.save(os.path.join(filefolder, filename)) 
+            photo.save(os.path.join(os.getcwd(),"uploads", filename)) 
 
 
             
