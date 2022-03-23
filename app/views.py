@@ -53,7 +53,7 @@ def properties_create():
 
             photo = form.photo.data            
             filename = secure_filename(photo.filename)
-            photo.save(os.path.join(os.getcwd(),"uploads", filename)) 
+            photo.save(os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER'], filename)) 
 
 
             
@@ -84,7 +84,7 @@ def properties():
 
 @app.route('/properties/<propertyid>')
 def get_image(propertyid):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],propertyid)
+    return send_from_directory(os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER'],propertyid))
 
 @app.route('/property/<propertyid>')
 def property(propertyid): 
