@@ -86,7 +86,7 @@ def properties():
 
 @app.route('/properties/<propertyid>')
 def get_image(propertyid): 
-    filepath = os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER'])
+    filepath = os.path.join(os.getcwd(),'app/uploads/')
     return send_from_directory( filepath,propertyid)
 
 @app.route('/property/<propertyid>')
