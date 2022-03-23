@@ -82,6 +82,7 @@ def properties():
     return render_template('properties.html', properties= properties)
 
 
+
 @app.route('/properties/<propertyid>')
 def get_image(propertyid): 
     return send_from_directory( os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER']),propertyid)
