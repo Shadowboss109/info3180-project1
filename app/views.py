@@ -84,7 +84,8 @@ def properties():
 
 @app.route('/properties/<propertyid>')
 def get_image(propertyid):
-    return send_from_directory(os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER'],propertyid))
+    path = 
+    return send_from_directory( os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER']),propertyid)
 
 @app.route('/property/<propertyid>')
 def property(propertyid): 
