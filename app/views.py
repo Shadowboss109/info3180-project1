@@ -54,7 +54,7 @@ def properties_create():
 
             photo = form.photo.data            
             filename = secure_filename(photo.filename)
-            photo.save(os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER'], filename)) 
+            photo.save(os.path.join(os.getcwd(),'app/uploads/', filename)) 
 
 
             
