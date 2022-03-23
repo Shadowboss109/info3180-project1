@@ -31,6 +31,7 @@ def about():
 
 
 
+
 #/properties/create
 
 @app.route('/properties/create', methods=['POST', 'GET'])
